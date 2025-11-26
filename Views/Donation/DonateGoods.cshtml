@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Donate Goods";
+}
+
+<h1>Donate Essential Goods</h1>
+
+<form method="post" asp-controller="Donation" asp-action="SubmitDonation">
+    <div class="form-group">
+        <label for="donorName">Your Name (or Organization):</label>
+        <input type="text" class="form-control" id="donorName" name="donorName" required>
+    </div>
+
+    <div class="form-group">
+        <label for="category">Category of Donation:</label>
+        <select class="form-control" id="category" name="category" required>
+            <option value="">Please select</option>
+            <option value="Food">Food</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Medical Supplies">Medical Supplies</option>
+            <option value="Water">Water</option>
+            <option value="Shelter Materials">Shelter Materials</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description (e.g., "Canned Beans", "Winter Coats"):</label>
+        <input type="text" class="form-control" id="description" name="description" required>
+    </div>
+
+    <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <input type="number" class="form-control" id="quantity" name="quantity" min="1" required>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Submit Donation</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info mt-3">@ViewBag.Message</div>
+}

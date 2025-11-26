@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Volunteer Sign Up";
+}
+
+<h1>Join Our Volunteer Team</h1>
+
+<form method="post" asp-controller="Volunteer" asp-action="SubmitSignUp">
+    <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" required>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" class="form-control" id="phone" name="phone" required>
+    </div>
+
+    <div class="form-group">
+        <label for="skills">Skills & Abilities:</label>
+        <textarea class="form-control" id="skills" name="skills" rows="3" required placeholder="e.g., First Aid, Driving, Construction, Cooking, Translation..."></textarea>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Sign Up as Volunteer</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info mt-3">@ViewBag.Message</div>
+}

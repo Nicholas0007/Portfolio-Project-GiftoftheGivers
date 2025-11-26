@@ -1,0 +1,49 @@
+﻿@model List<DisasterAlleviationFoundation.Models.Volunteer>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Volunteers</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>All Volunteers</h1>
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Date Registered</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Skills</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var volunteer in Model)
+                    {
+                        <tr>
+                            <td>@volunteer.DateRegistered.ToString("g")</td>
+                            <td>@volunteer.FirstName @volunteer.LastName</td>
+                            <td>@volunteer.Email</td>
+                            <td>@volunteer.Phone</td>
+                            <td>@volunteer.Skills</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info">No volunteers have registered yet.</div>
+        }
+
+        <br />
+        <a href="/Volunteer/SignUp" class="btn btn-primary">Sign Up as Volunteer</a>
+        <a href="/" class="btn btn-secondary">Home</a>
+    </div>
+</body>
+</html>

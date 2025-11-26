@@ -1,0 +1,47 @@
+﻿@model List<DisasterAlleviationFoundation.Models.DisasterReport>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Disaster Reports</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>All Disaster Reports</h1>
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Date Reported</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>Urgency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var report in Model)
+                    {
+                        <tr>
+                            <td>@report.DateReported.ToString("g")</td>
+                            <td>@report.Location</td>
+                            <td>@report.Description</td>
+                            <td>@report.Urgency</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info">No disaster reports have been submitted yet.</div>
+        }
+
+        <br />
+        <a href="/Disaster/Report" class="btn btn-primary">Report New Disaster</a>
+        <a href="/" class="btn btn-secondary">Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿@model List<DisasterAlleviationFoundation.Models.Donation>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Donations</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>All Donations</h1>
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Date Donated</th>
+                        <th>Donor</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var donation in Model)
+                    {
+                        <tr>
+                            <td>@donation.DateDonated.ToString("g")</td>
+                            <td>@donation.DonorName</td>
+                            <td>@donation.Category</td>
+                            <td>@donation.Description</td>
+                            <td>@donation.Quantity</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info">No donations have been submitted yet.</div>
+        }
+
+        <br />
+        <a href="/Donation/DonateGoods" class="btn btn-primary">Make New Donation</a>
+        <a href="/" class="btn btn-secondary">Home</a>
+    </div>
+</body>
+</html>
